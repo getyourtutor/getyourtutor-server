@@ -3,7 +3,7 @@ name: Keep Server Active
 on:
   workflow_dispatch:  # Allows for manual triggering
   schedule:
-    - cron: "*/8 33 * * * *"  # Runs every 8 minutes and 33 seconds
+    - cron: "*/8 * * * *"  # Runs every 8 minutes and 33 seconds
 
 jobs:
   ping_job:
