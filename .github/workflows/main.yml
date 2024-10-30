@@ -23,7 +23,7 @@ jobs:
 
           endpoints=("https://www.getyourtutorsl.com" 
                      "https://www.getyourtutorsl.com/aboutus" 
-                     "https://getyourtutorsl.com/login")
+                     "https://www.getyourtutorsl.com/login")
 
           agent=${agents[$RANDOM % ${#agents[@]}]}
           endpoint=${endpoints[$RANDOM % ${#endpoints[@]}]}
