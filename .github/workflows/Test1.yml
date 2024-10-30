@@ -1,0 +1,20 @@
+
+
+name: getyourtutor test1
+
+on:
+  schedule:
+    - cron: "*/8 * * * *"  # Runs every 10 minutes
+
+jobs:
+  ping_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send HTTP request to keep server active
+        run: |
+          sleep $((RANDOM % 60))
+          agents=("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Safari/605.1.15" "Mozilla/5.0 (iPhone; CPU iPhone OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15" "Mozilla/5.0 (Linux; Android 10; SM-G960U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Mobile Safari/537.36")
+          endpoints=("https://www.getyourtutorsl.com" "https://www.getyourtutorsl.com/aboutus" "https://getyourtutorsl.com/login")
+          agent=${agents[$RANDOM % ${#agents[@]}]}
+          endpoint=${endpoints[$RANDOM % ${#endpoints[@]}]}
+          curl -I -A "$agent" "$endpoint" || echo "Request failed"
